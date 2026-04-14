@@ -129,3 +129,9 @@ tr:last-child td {
 .again:active {
     transform: scale(0.95);
 }
+
+@media (max-height: 800px) {
+    header {
+        height: 50px;
+    }
+}
