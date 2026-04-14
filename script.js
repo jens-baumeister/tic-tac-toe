@@ -128,7 +128,9 @@ function handleClick(index, element) {
 
     updatePlayerDisplay();
 
-    checkWinner();
+    if (!checkWinner()) {
+        checkDraw();
+    }
 }
 
 function updatePlayerDisplay() {
@@ -211,6 +213,16 @@ function drawWinLine(pattern) {
     });
 
         document.getElementById('again-btn').classList.remove('hidden');
+}
+
+function checkDraw() {
+    if (fields.every(field => field !== null) && !checkWinner()) {
+        setTimeout(() => {
+            document.getElementById('again-btn').classList.remove('hidden');
+        }, 800);
+        return true;
+    }
+    return false;
 }
 
 function again(){
