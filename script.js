@@ -10,12 +10,24 @@ let fields = [
     null
 ];
 
+let currentPlayer = 'cross';
+
 function init() {
     render();
 }
 
 function render() {
-    let html = '<table>';
+    let html = `
+        <div id="player-display">
+            <div id="player-cross" class="${currentPlayer === 'cross' ? 'active' : 'inactive'}">
+                ${createCross()}
+            </div>
+            <div id="player-circle" class="${currentPlayer === 'circle' ? 'active' : 'inactive'}">
+                ${createCircle()}
+            </div>
+        </div>
+        <table>
+    `;
 
     for (let i = 0; i < 3; i++) {
         html += '<tr>';
@@ -29,7 +41,7 @@ function render() {
             } else if (value === 'cross') {
                 html += `<td>${createCross()}</td>`;
             } else {
-                html += '<td></td>';
+                html += `<td onclick="handleClick(${index}, this)"></td>`;
             }
         }
 
@@ -96,4 +108,40 @@ function createCross() {
             </line>
         </svg>
     `;
+}
+
+function handleClick(index, element) {
+    if (fields[index] !== null) return;
+
+    fields[index] = currentPlayer;
+
+    if (currentPlayer === 'cross') {
+        element.innerHTML = createCross();
+        currentPlayer = 'circle';
+    } else {
+        element.innerHTML = createCircle();
+        currentPlayer = 'cross';
+    }
+
+    element.onclick = null;
+    updatePlayerDisplay();
+}
+
+function updatePlayerDisplay() {
+    let cross = document.getElementById('player-cross');
+    let circle = document.getElementById('player-circle');
+
+    if (currentPlayer === 'cross') {
+        cross.classList.add('active');
+        cross.classList.remove('inactive');
+
+        circle.classList.add('inactive');
+        circle.classList.remove('active');
+    } else {
+        circle.classList.add('active');
+        circle.classList.remove('inactive');
+
+        cross.classList.add('inactive');
+        cross.classList.remove('active');
+    }
 }
