@@ -1,15 +1,35 @@
-#content {
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    margin-bottom: 20px;
+    text-align: center;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
 }
 
 table {
     border-collapse: collapse;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4);
 }
 
 td {
@@ -20,7 +40,7 @@ td {
     font-size: 48px;
     font-weight: bold;
     color: #e2e8f0;
-    border: 2px solid #334155;
+    border: 2px solid white;
     cursor: pointer;
     transition: all 0.2s ease;
     background-color: #1e293b;
