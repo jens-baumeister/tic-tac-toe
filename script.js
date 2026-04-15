@@ -13,7 +13,7 @@ let fields = [
 let currentPlayer = 'cross';
 
 function init() {
-    document.getElementById('again-btn').classList.add('hidden');
+    document.getElementById('again').classList.add('hidden');
     render();
 }
 
@@ -212,13 +212,13 @@ function drawWinLine(pattern) {
         line.style.transform = `rotate(${angle}deg) scaleX(1)`;
     });
 
-        document.getElementById('again-btn').classList.remove('hidden');
+        document.getElementById('again').classList.remove('hidden');
 }
 
 function checkDraw() {
     if (fields.every(field => field !== null) && !checkWinner()) {
         setTimeout(() => {
-            document.getElementById('again-btn').classList.remove('hidden');
+            document.getElementById('again').classList.remove('hidden');
         }, 800);
         return true;
     }
